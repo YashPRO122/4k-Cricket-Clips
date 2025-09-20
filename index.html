@@ -69,7 +69,7 @@
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
-  <header>📺 4K CRICKET CLIPS</header>
+  <header>📺 4k CRICKET CLIPS</header>
   <div class="container">
     <video id="video" controls autoplay playsinline></video>
     <div class="loader" id="loader"></div>
@@ -78,23 +78,27 @@
 
   <script>
     // 🔗 PUT YOUR M3U8 LINK HERE
-    const streamUrl = "https://in-mc-fdlive.fancode.com/mumbai/136743_english_hls_36566c378196992ta-di_h264/index.m3u8
+    const originalLink = "https://in-mc-fdlive.fancode.com/mumbai/136743_english_hls_36566c378196992ta-di_h264/index.m3u8";
+
+    // 🌐 FREE PUBLIC CORS PROXY
+    const streamUrl = "https://cors-proxy.fringe.zone/?url=" + encodeURIComponent(originalLink);
+
     const video = document.getElementById("video");
-    const errorDiv = document.getElementById("error");
     const loader = document.getElementById("loader");
+    const errorDiv = document.getElementById("error");
 
     async function startStream() {
       try {
-        loader.style.display = "block"; // show loader
+        loader.style.display = "block";
         if (Hls.isSupported()) {
           const hls = new Hls();
           hls.loadSource(streamUrl);
           hls.attachMedia(video);
           hls.on(Hls.Events.MANIFEST_PARSED, () => {
-            loader.style.display = "none"; // hide loader when ready
+            loader.style.display = "none";
             video.play();
           });
-          hls.on(Hls.Events.ERROR, function (event, data) {
+          hls.on(Hls.Events.ERROR, (event, data) => {
             loader.style.display = "none";
             errorDiv.textContent = "⚠️ Stream error: " + data.details;
           });
@@ -119,5 +123,3 @@
   </script>
 </body>
 </html>
-
-
