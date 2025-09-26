@@ -29,6 +29,138 @@
     height: 100%;
     border: none;
   }
+<!-- Telegram Popup -->
+<div class="popup-overlay" id="telegramPopup">
+  <div class="popup-box">
+    <button class="close-btn" onclick="closePopup()">×</button>
+    <div class="popup-header">🚀 Stay Connected</div>
+    <div class="popup-subtitle">Join our Telegram for live match updates & streams!</div>
+    <div class="popup-buttons">
+      <a href="https://t.me/unixash18" target="_blank" class="popup-btn join-btn">🔥 Join Now</a>
+      <button class="popup-btn already-btn" onclick="closePopup()">Already Joined</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Popup Overlay */
+  .popup-overlay {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 9999; backdrop-filter: blur(6px);
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  /* Popup Box */
+  .popup-box {
+    width: 340px;
+    background: rgba(20, 20, 30, 0.7);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 18px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 0 30px rgba(0, 200, 255, 0.4), 0 0 80px rgba(255, 0, 200, 0.2);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transform: scale(0.9);
+    animation: popupScale 0.5s ease forwards;
+    position: relative;
+  }
+
+  /* Header Gradient Text */
+  .popup-header {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #00eaff, #bd00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.6rem;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+  }
+
+  .popup-subtitle {
+    font-size: 1rem;
+    color: #bbb;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Buttons */
+  .popup-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .popup-btn {
+    padding: 0.9rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Gradient Join Button */
+  .join-btn {
+    background: linear-gradient(135deg, #00eaff, #9c00ff);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+    text-decoration: none;
+    text-align: center;
+  }
+  .join-btn:hover {
+    background: linear-gradient(135deg, #00ffff, #c000ff);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.9);
+  }
+
+  .already-btn:hover {
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* Close Button */
+  .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 1.5rem;
+    color: #00eaff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  .close-btn:hover {
+    color: #ff00cc;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes popupScale {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+</style>
+
+<script>
+  // Auto show popup after 2 seconds
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('telegramPopup').style.display = 'flex';
+    }, 2000);
+  });
+
+  function closePopup() {
+    document.getElementById('telegramPopup').style.display = 'none';
+  }
+</script>
 
   /* Telegram Popup Button */
   .telegram-popup {
@@ -74,3 +206,4 @@
 
 </body>
 </html>
+
